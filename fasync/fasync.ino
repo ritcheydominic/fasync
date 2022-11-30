@@ -12,25 +12,24 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(SYNC_PIN, LOW);
-  // if (initSyncPulse) {
-  //   if (syncType == SYSTEM_SENSOR) {
-  //     digitalWrite(SYNC_PIN, HIGH);
-  //     delay(1980);
-  //     digitalWrite(SYNC_PIN, LOW);
-  //     delay(20);
-  //     digitalWrite(SYNC_PIN, HIGH);
-  //     delay(20);
-  //     digitalWrite(SYNC_PIN, LOW);
-  //     delay(20);
-  //   }
-  //   initSyncPulse = false;
-  // } else {
-  //   if (syncType == SYSTEM_SENSOR) {
-  //     digitalWrite(SYNC_PIN, HIGH);
-  //     delay(980);
-  //     digitalWrite(SYNC_PIN, LOW);
-  //     delay(20);
-  //   }
-  // }
+  if (initSyncPulse) {
+    if (syncType == SYSTEM_SENSOR) {
+      digitalWrite(SYNC_PIN, LOW);
+      delay(1980);
+      digitalWrite(SYNC_PIN, HIGH);
+      delay(20);
+      digitalWrite(SYNC_PIN, LOW);
+      delay(20);
+      digitalWrite(SYNC_PIN, HIGH);
+      delay(20);
+    }
+    initSyncPulse = false;
+  } else {
+    if (syncType == SYSTEM_SENSOR) {
+      digitalWrite(SYNC_PIN, LOW);
+      delay(980);
+      digitalWrite(SYNC_PIN, HIGH);
+      delay(20);
+    }
+  }
 }
